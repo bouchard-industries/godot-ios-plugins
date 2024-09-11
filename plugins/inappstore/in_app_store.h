@@ -79,6 +79,7 @@ public:
 
 	InAppStore();
 	~InAppStore();
+    bool transaction_in_progress;
 };
 
 #endif

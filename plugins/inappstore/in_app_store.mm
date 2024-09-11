@@ -410,7 +410,43 @@ Error InAppStore::purchase(Dictionary p_params) {
 
 	NSString *pid = [[NSString alloc] initWithUTF8String:String(p_params["product_id"]).utf8().get_data()];
 
-	return [products_request_delegate purchaseProductWithProductID:pid];
+    // Check if a transaction is already in progress
+    if (transaction_in_progress) {
+        // Handle this case, such as showing a message to the user
+        // or preventing additional purchases until the previous transaction is completed.
+        // You can return an error or post an event to notify the game logic.
+        Dictionary error_event;
+        error_event["type"] = "purchase";
+        error_event["result"] = "error";
+        error_event["error"] = "A purchase is already in progress.";
+        _post_event(error_event);
+        return ERR_UNAVAILABLE;
+    }
+    
+    transaction_in_progress = true;  // Set the flag to indicate a transaction is in progress
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // Perform the purchase asynchronously
+        Error result = [products_request_delegate purchaseProductWithProductID:pid];
+
+        // Handle the purchase result (inside the async block)
+        Dictionary purchase_event;
+        purchase_event["type"] = "purchase";
+        if (result == OK) {
+            purchase_event["result"] = "ok";
+        } else {
+            purchase_event["result"] = "error";
+            purchase_event["error"] = "Purchase failed.";
+        }
+
+        //_post_event(purchase_event);
+
+        // Reset the flag to indicate that the transaction is no longer in progress
+        transaction_in_progress = false;
+    });
+    Error notError = OK;
+	return notError;
 }
 
 int InAppStore::get_pending_event_count() {
