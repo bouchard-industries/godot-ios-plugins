@@ -24,7 +24,7 @@ opts.Add(EnumVariable('arch', "Compilation Architecture", '', ['', 'arm64', 'arm
 opts.Add(BoolVariable('simulator', "Compilation platform", 'no'))
 opts.Add(BoolVariable('use_llvm', "Use the LLVM / Clang compiler", 'no'))
 opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'bin/'))
-opts.Add(EnumVariable('plugin', 'Plugin to build', '', ['', 'apn', 'arkit', 'camera', 'icloud', 'gamecenter', 'inappstore', 'photo_picker']))
+opts.Add(EnumVariable('plugin', 'Plugin to build', '', ['', 'apn', 'arkit', 'camera', 'icloud', 'gamecenter', 'inappstore', 'photo_picker', 'BiFirebaseGodot']))
 opts.Add(EnumVariable('version', 'Godot version to target', '', ['', '3.x', '4.0']))
 
 # Updates the environment with the option variables.
@@ -88,7 +88,9 @@ env.Prepend(CXXFLAGS=[
     '-DNEED_LONG_INT', '-DLIBYUV_DISABLE_NEON', 
     '-DIOS_ENABLED', '-DUNIX_ENABLED', '-DCOREAUDIO_ENABLED'
 ])
-env.Append(LINKFLAGS=["-arch", env['arch'], '-isysroot', sdk_path, '-F' + sdk_path])
+
+
+env.Append(LIBPATH=['plugins/BiFirebaseGodot/libs/Firebase'])
 
 if env['arch'] == 'armv7':
     env.Prepend(CXXFLAGS=['-fno-aligned-allocation'])
@@ -163,6 +165,16 @@ else:
         '.', 
         'godot', 
         'godot/platform/ios',
+	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseCore.xcframework/ios-arm64/FBLPromises.framework/FirebaseCore.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseAnalytics.xcframework/ios-arm64/FirebaseAnalytics.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseCore.xcframework/ios-arm64/FirebaseCore.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/FBLPromises.xcframework/ios-arm64/FBLPromises.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseCoreInternal.xcframework/ios-arm64/FirebaseCoreInternal.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseInstallations.xcframework/ios-arm64/FirebaseInstallations.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/GoogleAppMeasurement.xcframework/ios-arm64/GoogleAppMeasurement.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/GoogleAppMeasurementIdentitySupport.xcframework/ios-arm64/GoogleAppMeasurementIdentitySupport.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/GoogleUtilities.xcframework/ios-arm64/GoogleUtilities.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/nanopb.xcframework/ios-arm64/nanopb.framework/Headers'
     ])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
@@ -174,7 +186,8 @@ sources.append(Glob('plugins/' + env['plugin'] + '/*.m'))
 library_platform = env["arch"] + "-" + ("simulator" if env["simulator"] else "ios")
 library_name = env['plugin'] + "." + library_platform + "." + env["target"] + ".a"
 library = env.StaticLibrary(target=env['target_path'] + library_name, source=sources)
-
+frameworks_output_dir = env['target_path'] + 'frameworks/'  # Destination directory for frameworks
+library = env.StaticLibrary(target=env['target_path'] + library_name, source=sources)
 Default(library)
 
 # Generates help for the -h scons option.

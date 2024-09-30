@@ -1,3 +1,6 @@
 [submodule "godot"]
 	path = godot
 	url = https://github.com/godotengine/godot
+[submodule "plugins/BiFirebaseGodot"]
+	path = plugins/BiFirebaseGodot
+	url = https://github.com/bouchard-industries/BiFirebaseGodot
