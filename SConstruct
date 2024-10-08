@@ -174,7 +174,11 @@ else:
 	'plugins/BiFirebaseGodot/libs/Firebase/GoogleAppMeasurement.xcframework/ios-arm64/GoogleAppMeasurement.framework/Headers',
 	'plugins/BiFirebaseGodot/libs/Firebase/GoogleAppMeasurementIdentitySupport.xcframework/ios-arm64/GoogleAppMeasurementIdentitySupport.framework/Headers',
 	'plugins/BiFirebaseGodot/libs/Firebase/GoogleUtilities.xcframework/ios-arm64/GoogleUtilities.framework/Headers',
-	'plugins/BiFirebaseGodot/libs/Firebase/nanopb.xcframework/ios-arm64/nanopb.framework/Headers'
+	'plugins/BiFirebaseGodot/libs/Firebase/nanopb.xcframework/ios-arm64/nanopb.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseABTesting.xcframework/ios-arm64/FirebaseABTesting.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseRemoteConfig.xcframework/ios-arm64/FirebaseRemoteConfig.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseRemoteConfigInterop.xcframework/ios-arm64/FirebaseRemoteConfigInterop.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseSharedSwift.xcframework/ios-arm64/FirebaseSharedSwift.framework/Headers'
     ])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
