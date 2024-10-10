@@ -175,10 +175,15 @@ else:
 	'plugins/BiFirebaseGodot/libs/Firebase/GoogleAppMeasurementIdentitySupport.xcframework/ios-arm64/GoogleAppMeasurementIdentitySupport.framework/Headers',
 	'plugins/BiFirebaseGodot/libs/Firebase/GoogleUtilities.xcframework/ios-arm64/GoogleUtilities.framework/Headers',
 	'plugins/BiFirebaseGodot/libs/Firebase/nanopb.xcframework/ios-arm64/nanopb.framework/Headers',
-	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseABTesting.xcframework/ios-arm64/FirebaseABTesting.framework/Headers',
-	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseRemoteConfig.xcframework/ios-arm64/FirebaseRemoteConfig.framework/Headers',
-	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseRemoteConfigInterop.xcframework/ios-arm64/FirebaseRemoteConfigInterop.framework/Headers',
-	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseSharedSwift.xcframework/ios-arm64/FirebaseSharedSwift.framework/Headers'
+	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseABTesting.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseRemoteConfig.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseRemoteConfigInterop.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseSharedSwift.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/GoogleDataTransport.xcframework/ios-arm64/GoogleDataTransport.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/PromisesSwift.xcframework/ios-arm64/PromisesSwift.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseCoreExtension.xcframework/ios-arm64/FirebaseCoreExtension.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseSessions.xcframework/ios-arm64/FirebaseSessions.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseCrashlytics.xcframework/ios-arm64/FirebaseCrashlytics.framework/Headers'
     ])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
