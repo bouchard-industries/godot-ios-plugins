@@ -183,6 +183,7 @@ else:
 	'plugins/BiFirebaseGodot/libs/Firebase/PromisesSwift.xcframework/ios-arm64/PromisesSwift.framework/Headers',
 	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseCoreExtension.xcframework/ios-arm64/FirebaseCoreExtension.framework/Headers',
 	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseSessions.xcframework/ios-arm64/FirebaseSessions.framework/Headers',
+	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseDynamicLinks.xcframework/ios-arm64/FirebaseDynamicLinks.framework/Headers',
 	'plugins/BiFirebaseGodot/libs/Firebase/FirebaseCrashlytics.xcframework/ios-arm64/FirebaseCrashlytics.framework/Headers'
     ])
 
